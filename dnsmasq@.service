@@ -1,0 +1,27 @@
+[Unit]
+Description=dnsmasq - A lightweight DHCP and caching DNS server
+Documentation=man:dnsmasq(8)
+
+After=network.target
+
+After=systemd-networkd-wait-online@%i.service
+Requires=systemd-networkd-wait-online@%i.service
+
+Before=network-online.target nss-lookup.target
+Wants=nss-lookup.target
+
+[Service]
+Type=dbus
+BusName=uk.org.thekelleys.dnsmasq.dnsmasq.%i
+
+ExecStartPre=/usr/bin/dnsmasq --test --conf-file=/etc/dnsmasq.d/%i.dnsmasq
+ExecStart=/usr/bin/dnsmasq -k --user=dnsmasq --pid-file --enable-dbus=uk.org.thekelleys.dnsmasq.dnsmasq.%i --conf-file=/etc/dnsmasq.d/%i.dnsmasq
+ExecReload=/bin/kill -HUP $MAINPID
+
+Restart=on-failure
+
+PrivateDevices=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target
