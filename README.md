@@ -100,3 +100,6 @@ So a guest's DNS request is routed like
 guest -> 192.168.0.130 -> 192.168.0.2 (-> 8.8.8.8)?
 ```
 the last step occurring only if the domain is not in the pi-holes blocklist.
+
+(Why not run two instances of pihole-FTL?
+Because that's not possible. Unless you want to use some sort of virtualisation I guess, but I *don't*.)
