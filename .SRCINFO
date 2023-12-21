@@ -1,0 +1,13 @@
+pkgbase = dnsmasq-at
+	pkgdesc = A dnsmasq@.service for easy per-interface configuration of dnsmasq
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = dnsmasq
+	source = dnsmasq@.service
+	source = dnsmasq@.conf
+	sha256sums = 1835f8568dd1f4ce40ecb6d483ef7c3c7cb67e50c3a6c0b0942e24b0e8b51c90
+	sha256sums = 414aeaefceed6eb90b7ce2027c50ff72228575286353f2cca9795226b0e69779
+
+pkgname = dnsmasq-at
